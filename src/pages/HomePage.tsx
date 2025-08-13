@@ -597,8 +597,8 @@ export function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {privacyManagementFeatures.map((feature, index) => (
               <Link key={index} to={feature.link} className="group">
-                <div className="bg-card rounded-lg border p-6 h-full transition-all duration-200 hover:shadow-md group-hover:border-primary-300">
-                  <div className="p-3 bg-white dark:bg-gray-700 rounded-lg w-fit mb-4">
+                <div className="bg-card rounded-lg border p-6 h-full transition-all duration-200 hover:shadow-md group-hover:border-primary-300 text-center">
+                  <div className="p-3 bg-white dark:bg-gray-700 rounded-lg w-fit mb-4 mx-auto">
                     {feature.icon}
                   </div>
                   <h3 className="font-semibold text-lg mb-2 group-hover:text-primary-700 transition-colors">
