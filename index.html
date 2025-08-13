@@ -3,40 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
-    <meta name="theme-color" content="#1E40AF" />
-    <!-- Primary Meta Tags -->
     <title>CyberCorrect™ Privacy Portal</title>
     <meta name="description" content="Privacy self-service portal empowering stakeholders to exercise data rights and manage privacy compliance across multiple regulations" />
-    <meta name="author" content="Privacy Portal" />
-    <meta name="keywords" content="privacy portal, data rights, privacy compliance, self-service, stakeholder management, GDPR, CCPA, FERPA" />
-    
-    <meta property="og:title" content="Privacy Self-Service Portal" />
-    <meta property="og:description" content="Privacy self-service portal empowering stakeholders to exercise data rights and manage privacy compliance" />
-    <meta property="og:image" content="/logo.png" />
-    <meta property="og:site_name" content="Privacy Portal" />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="/" />
-    <meta property="twitter:title" content="Privacy Self-Service Portal" />
-    <meta property="twitter:description" content="Privacy self-service portal empowering stakeholders to exercise data rights and manage privacy compliance" />
-    <meta property="twitter:image" content="/logo.png" />
-    
-    <!-- Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://xcdeuotitmxjelowmypa.supabase.co" />
-    
-    <!-- White Label Custom CSS Support -->
-    <script>
-      window.BRAND_CONFIG_LOADED = false;
-    </script>
+    <style>
+      body { margin: 0; font-family: system-ui, sans-serif; }
+      #loading { 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        height: 100vh; 
+        background: #f8faff;
+        flex-direction: column;
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e5e7eb;
+        border-top: 4px solid #1e40af;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 16px;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
+    <div id="loading">
+      <div class="spinner"></div>
+      <p>Loading CyberCorrect™ Privacy Portal...</p>
+    </div>
     <div id="root"></div>
+    <script>
+      // Remove loading screen when app loads
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const loading = document.getElementById('loading');
+          if (loading) loading.style.display = 'none';
+        }, 1000);
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

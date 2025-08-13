@@ -1,11 +1,1 @@
-# Netlify redirects for SPA routing
-# Handle static assets first (don't redirect these)
-)
-/assets/*  /assets/:splat  200
-/logos/*   /logos/:splat   200
-/*.js      /:splat         200
-/*.css     /:splat         200
-/*.mjs     /:splat         200
-
-# Catch-all for SPA routing (only for HTML requests)
-/*         /index.html     200
+/*    /index.html   200
