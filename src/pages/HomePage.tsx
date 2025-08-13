@@ -308,6 +308,146 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Complete Privacy Compliance Suite */}
+      <section className="py-20 px-6 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Complete Privacy Compliance Suite
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Everything you need to manage educational privacy compliance across multiple regulations and stakeholders in one comprehensive platform
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* Core Compliance */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+              <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg w-fit mb-4">
+                <Shield className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Multi-Regulation Compliance</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Comprehensive support for FERPA, COPPA, CCPA, GDPR, BIPA, SHIELD, and other privacy regulations
+              </p>
+              <div className="flex flex-wrap gap-1">
+                {['FERPA', 'COPPA', 'CCPA', 'GDPR'].map(reg => (
+                  <Badge key={reg} variant={reg.toLowerCase() as any} className="text-xs">
+                    {reg}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            {/* Self-Service Portal */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+              <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg w-fit mb-4">
+                <Users className="h-6 w-6 text-green-600 dark:text-green-400" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Self-Service Portal</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Empowers all stakeholders to understand duties and exercise rights independently
+              </p>
+              <ul className="text-xs text-muted-foreground space-y-1">
+                <li>• Students & families data rights</li>
+                <li>• Staff privacy duty guidance</li>
+                <li>• Administrator oversight tools</li>
+                <li>• External party access</li>
+              </ul>
+            </div>
+
+            {/* Automated Workflows */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+              <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-lg w-fit mb-4">
+                <Settings className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Automated Workflows</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Streamline compliance processes with intelligent automation and alerts
+              </p>
+              <ul className="text-xs text-muted-foreground space-y-1">
+                <li>• Deadline reminders</li>
+                <li>• Request processing</li>
+                <li>• Incident response</li>
+                <li>• Compliance reporting</li>
+              </ul>
+            </div>
+
+            {/* Analytics & Insights */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+              <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded-lg w-fit mb-4">
+                <BarChart3 className="h-6 w-6 text-red-600 dark:text-red-400" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Analytics & Insights</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Comprehensive analytics and reporting for privacy program performance
+              </p>
+              <ul className="text-xs text-muted-foreground space-y-1">
+                <li>• Compliance score tracking</li>
+                <li>• Request processing metrics</li>
+                <li>• Incident response analysis</li>
+                <li>• Regulatory reporting</li>
+              </ul>
+            </div>
+
+            {/* Stakeholder Management */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+              <div className="p-3 bg-amber-100 dark:bg-amber-900/30 rounded-lg w-fit mb-4">
+                <UserCheck className="h-6 w-6 text-amber-600 dark:text-amber-400" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Stakeholder Management</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Complete access control and permission management for all user types
+              </p>
+              <ul className="text-xs text-muted-foreground space-y-1">
+                <li>• Role-based access control</li>
+                <li>• Permission management</li>
+                <li>• Activity monitoring</li>
+                <li>• Audit trails</li>
+              </ul>
+            </div>
+
+            {/* Vendor Oversight */}
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+              <div className="p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg w-fit mb-4">
+                <Building className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Vendor Oversight</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Comprehensive third-party vendor privacy assessment and monitoring
+              </p>
+              <ul className="text-xs text-muted-foreground space-y-1">
+                <li>• Privacy assessments</li>
+                <li>• Risk evaluation</li>
+                <li>• Contract management</li>
+                <li>• Ongoing monitoring</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white">
+              <h3 className="text-2xl font-bold mb-4">All-in-One Privacy Management Platform</h3>
+              <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+                From stakeholder data rights to institutional compliance oversight, our platform provides every tool you need to maintain privacy compliance across your educational institution.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <Link to="/privacy">
+                  <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 border border-gray-200 shadow-sm">
+                    Explore Full Platform <Database className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link to="/how-it-works">
+                  <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-200">
+                    See How It Works <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
        
       {/* Stakeholder Categories - Primary Focus */}
       <section className="py-20 px-6 bg-background">
@@ -478,146 +618,6 @@ export function HomePage() {
                 View Full Privacy Portal <Database className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Complete Privacy Compliance Suite */}
-      <section className="py-20 px-6 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Complete Privacy Compliance Suite
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Everything you need to manage educational privacy compliance across multiple regulations and stakeholders in one comprehensive platform
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {/* Core Compliance */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
-              <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg w-fit mb-4">
-                <Shield className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Multi-Regulation Compliance</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Comprehensive support for FERPA, COPPA, CCPA, GDPR, BIPA, SHIELD, and other privacy regulations
-              </p>
-              <div className="flex flex-wrap gap-1">
-                {['FERPA', 'COPPA', 'CCPA', 'GDPR'].map(reg => (
-                  <Badge key={reg} variant={reg.toLowerCase() as any} className="text-xs">
-                    {reg}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            {/* Self-Service Portal */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
-              <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg w-fit mb-4">
-                <Users className="h-6 w-6 text-green-600 dark:text-green-400" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Self-Service Portal</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Empowers all stakeholders to understand duties and exercise rights independently
-              </p>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• Students & families data rights</li>
-                <li>• Staff privacy duty guidance</li>
-                <li>• Administrator oversight tools</li>
-                <li>• External party access</li>
-              </ul>
-            </div>
-
-            {/* Automated Workflows */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
-              <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-lg w-fit mb-4">
-                <Settings className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Automated Workflows</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Streamline compliance processes with intelligent automation and alerts
-              </p>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• Deadline reminders</li>
-                <li>• Request processing</li>
-                <li>• Incident response</li>
-                <li>• Compliance reporting</li>
-              </ul>
-            </div>
-
-            {/* Analytics & Insights */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
-              <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded-lg w-fit mb-4">
-                <BarChart3 className="h-6 w-6 text-red-600 dark:text-red-400" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Analytics & Insights</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Comprehensive analytics and reporting for privacy program performance
-              </p>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• Compliance score tracking</li>
-                <li>• Request processing metrics</li>
-                <li>• Incident response analysis</li>
-                <li>• Regulatory reporting</li>
-              </ul>
-            </div>
-
-            {/* Stakeholder Management */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
-              <div className="p-3 bg-amber-100 dark:bg-amber-900/30 rounded-lg w-fit mb-4">
-                <UserCheck className="h-6 w-6 text-amber-600 dark:text-amber-400" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Stakeholder Management</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Complete access control and permission management for all user types
-              </p>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• Role-based access control</li>
-                <li>• Permission management</li>
-                <li>• Activity monitoring</li>
-                <li>• Audit trails</li>
-              </ul>
-            </div>
-
-            {/* Vendor Oversight */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
-              <div className="p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg w-fit mb-4">
-                <Building className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Vendor Oversight</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Comprehensive third-party vendor privacy assessment and monitoring
-              </p>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• Privacy assessments</li>
-                <li>• Risk evaluation</li>
-                <li>• Contract management</li>
-                <li>• Ongoing monitoring</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">All-in-One Privacy Management Platform</h3>
-              <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-                From stakeholder data rights to institutional compliance oversight, our platform provides every tool you need to maintain privacy compliance across your educational institution.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link to="/privacy">
-                  <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 border border-gray-200 shadow-sm">
-                    Explore Full Platform <Database className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link to="/how-it-works">
-                  <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-200">
-                    See How It Works <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
