@@ -1,3 +1,4 @@
+```toml
 [build]
   publish = "dist"
   command = "npm run build"
@@ -6,3 +7,4 @@
   from = "/*"
   to = "/index.html"
   status = 200
+```
