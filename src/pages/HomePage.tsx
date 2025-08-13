@@ -700,7 +700,6 @@ export function HomePage() {
           </div>
           
           <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/20">
-            <p className="text-primary-100 text-sm mb-4">
             <p className="text-slate-500 dark:text-primary-100 text-sm mb-4">
               Questions about your privacy rights or duties?
             </p>
