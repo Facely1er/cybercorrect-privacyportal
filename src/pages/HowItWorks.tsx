@@ -240,28 +240,28 @@ export function HowItWorksPage() {
                   {journey.steps.map((step, stepIndex) => (
                     <div key={stepIndex} className="flex items-start gap-4 group/step">
                       <div className="relative">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary/80 text-white flex items-center justify-center flex-shrink-0 shadow-lg group-hover/step:scale-110 transition-transform duration-200">
-                          <span className="text-sm font-bold">{stepIndex + 1}</span>
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 text-white flex items-center justify-center flex-shrink-0 shadow-xl group-hover/step:scale-110 group-hover/step:shadow-2xl transition-all duration-300 ring-2 ring-blue-500/20">
+                          <span className="text-sm font-extrabold">{stepIndex + 1}</span>
                         </div>
                         {stepIndex < journey.steps.length - 1 && (
-                          <div className="absolute top-8 left-1/2 w-px h-6 bg-gradient-to-b from-primary/50 to-transparent transform -translate-x-1/2"></div>
+                          <div className="absolute top-10 left-1/2 w-0.5 h-8 bg-gradient-to-b from-blue-500/60 to-blue-300/20 transform -translate-x-1/2"></div>
                         )}
                       </div>
                       <div className="flex-1 pt-1">
-                        <span className="text-sm leading-relaxed group-hover/step:text-primary transition-colors duration-200">{step}</span>
+                        <span className="text-sm leading-relaxed font-medium text-foreground group-hover/step:text-blue-600 dark:group-hover/step:text-blue-400 transition-colors duration-200">{step}</span>
                       </div>
                     </div>
                   ))}
                 </div>
                 
-                <div className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 rounded-xl p-6 border border-primary/20 relative z-10 group-hover:from-primary/10 group-hover:via-primary/15 group-hover:to-primary/10 transition-all duration-300">
+                <div className="bg-gradient-to-br from-green-50/80 via-emerald-50/60 to-green-50/40 dark:from-green-900/30 dark:via-emerald-900/20 dark:to-green-900/10 rounded-xl p-6 border border-green-200/60 dark:border-green-700/40 relative z-10 group-hover:from-green-100/90 group-hover:via-emerald-100/70 group-hover:to-green-100/50 dark:group-hover:from-green-800/40 dark:group-hover:via-emerald-800/30 dark:group-hover:to-green-800/20 transition-all duration-300 shadow-sm">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-success to-success/80 flex items-center justify-center">
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 flex items-center justify-center shadow-lg">
                       <CheckCircle className="w-4 h-4 text-white" />
                     </div>
-                    <h4 className="font-bold text-primary-800 dark:text-primary-300">Outcome</h4>
+                    <h4 className="font-bold text-green-800 dark:text-green-300 text-base">Outcome</h4>
                   </div>
-                  <p className="text-sm text-primary-700 dark:text-primary-400 leading-relaxed font-medium">{journey.outcome}</p>
+                  <p className="text-sm text-green-700 dark:text-green-400 leading-relaxed font-semibold">{journey.outcome}</p>
                 </div>
               </div>
             ))}
