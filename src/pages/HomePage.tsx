@@ -679,7 +679,7 @@ export function HomePage() {
 
       {/* Call to Action */}
       <section className="py-20 px-6 bg-gradient-to-r from-primary-600 to-blue-600 text-white">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto px-4 text-center bg-gradient-to-br from-blue-600 via-blue-700 to-teal-600 rounded-lg p-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Take Control of Your Privacy Today
           </h2>
