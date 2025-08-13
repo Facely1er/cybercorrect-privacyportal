@@ -1,23 +1,57 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App.tsx';
 import './index.css';
 
-console.log('Starting React app...');
+console.log('CyberCorrect Privacy Portal - Starting application...');
 
+// Get root element and handle errors gracefully
 const rootElement = document.getElementById('root');
 
 if (!rootElement) {
-  console.error('Root element not found!');
-  document.body.innerHTML = '<div style="padding: 20px; text-align: center;"><h1>Error: Root element not found</h1><p>There was a problem loading the application.</p></div>';
+  console.error('Root element not found');
+  document.body.innerHTML = `
+    <div style="padding: 40px; text-align: center; font-family: system-ui;">
+      <h1>CyberCorrect™ Privacy Portal</h1>
+      <p>Application failed to initialize. Please refresh the page.</p>
+      <button onclick="window.location.reload()" style="padding: 8px 16px; margin-top: 16px; cursor: pointer; background: #1e40af; color: white; border: none; border-radius: 4px;">
+        Refresh Page
+      </button>
+    </div>
+  `;
 } else {
-  console.log('Root element found, creating React app...');
   try {
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(<App />);
+    console.log('Root element found, rendering React app...');
+    
+    // Hide loading screen
+    const loading = document.getElementById('loading');
+    if (loading) {
+      loading.style.display = 'none';
+    }
+    
+    const root = createRoot(rootElement);
+    root.render(
+      <StrictMode>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </StrictMode>
+    );
+    
     console.log('React app rendered successfully');
   } catch (error) {
     console.error('Error rendering React app:', error);
-    document.body.innerHTML = '<div style="padding: 20px; text-align: center;"><h1>Error Loading App</h1><p>Please refresh the page or contact support.</p></div>';
+    
+    // Show error message
+    rootElement.innerHTML = `
+      <div style="padding: 40px; text-align: center; font-family: system-ui;">
+        <h1>CyberCorrect™ Privacy Portal</h1>
+        <p>Error loading application: ${error.message}</p>
+        <button onclick="window.location.reload()" style="padding: 8px 16px; margin-top: 16px; cursor: pointer; background: #1e40af; color: white; border: none; border-radius: 4px;">
+          Refresh Page
+        </button>
+      </div>
+    `;
   }
 }
