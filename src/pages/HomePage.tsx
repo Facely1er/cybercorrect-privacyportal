@@ -427,7 +427,7 @@ export function HomePage() {
           </div>
 
           <div className="text-center">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-white">
+            <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-teal-600 rounded-lg p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">All-in-One Privacy Management Platform</h3>
               <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
                 From stakeholder data rights to institutional compliance oversight, our platform provides every tool you need to maintain privacy compliance across your educational institution.
