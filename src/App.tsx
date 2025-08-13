@@ -52,84 +52,84 @@ function App() {
           <ThemeProvider defaultTheme="dark" storageKey="theme">
             <AccessibilityProvider>
               <NotificationProvider>
-              <div className="min-h-screen bg-background text-foreground flex flex-col">
-                <SkipToContent />
-                <Header />
-                
-                <div className="flex flex-1 pt-16">
-                  <Routes>
-                    {/* Privacy Portal Routes with Sidebar */}
-                    <Route path="/privacy/*" element={
-                      <>
-                        <PrivacyPortalSidebar />
+                <div className="min-h-screen bg-background text-foreground flex flex-col">
+                  <SkipToContent />
+                  <Header />
+                  
+                  <div className="flex flex-1 pt-16">
+                    <Routes>
+                      {/* Privacy Portal Routes with Sidebar */}
+                      <Route path="/privacy/*" element={
+                        <>
+                          <PrivacyPortalSidebar />
+                          <main id="main-content" className="flex-1 focus:outline-none">
+                            <Routes>
+                              <Route index element={<PrivacyDashboardPage />} />
+                              <Route path="dashboard" element={<PrivacyDashboardPage />} />
+                              <Route path="data-rights" element={<DataRightsPortalPage />} />
+                              <Route path="obligations" element={<ComplianceObligationsPage />} />
+                              <Route path="incidents" element={<PrivacyIncidentsPage />} />
+                              <Route path="vendors" element={<VendorAssessmentsPage />} />
+                              <Route path="consent" element={<ConsentManagementPage />} />
+                              <Route path="stakeholders" element={<StakeholderManagementPage />} />
+                              <Route path="automation" element={<AutomationPage />} />
+                              <Route path="analytics" element={<AnalyticsPage />} />
+                              <Route path="reports" element={<ReportsPage />} />
+                            </Routes>
+                          </main>
+                        </>
+                      } />
+
+                      {/* Main Application Routes without Sidebar */}
+                      <Route path="/*" element={
                         <main id="main-content" className="flex-1 focus:outline-none">
                           <Routes>
-                            <Route index element={<PrivacyDashboardPage />} />
-                            <Route path="dashboard" element={<PrivacyDashboardPage />} />
-                            <Route path="data-rights" element={<DataRightsPortalPage />} />
-                            <Route path="obligations" element={<ComplianceObligationsPage />} />
-                            <Route path="incidents" element={<PrivacyIncidentsPage />} />
-                            <Route path="vendors" element={<VendorAssessmentsPage />} />
-                            <Route path="consent" element={<ConsentManagementPage />} />
-                            <Route path="stakeholders" element={<StakeholderManagementPage />} />
-                            <Route path="automation" element={<AutomationPage />} />
-                            <Route path="analytics" element={<AnalyticsPage />} />
-                            <Route path="reports" element={<ReportsPage />} />
+                            {/* Public pages */}
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/about" element={<AboutPage />} />
+                            <Route path="/how-it-works" element={<HowItWorksPage />} />
+                            <Route path="/contact" element={<ContactPage />} />
+                            <Route path="/faq" element={<FAQPage />} />
+                            <Route path="/legal" element={<LegalPage />} />
+                            <Route path="/terms" element={<TermsPage />} />
+                            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+
+                            {/* Authentication */}
+                            <Route path="/login" element={<LoginPage />} />
+                            <Route path="/register" element={<RegisterPage />} />
+                            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                            <Route path="/profile" element={<ProfilePage />} />
+                            <Route path="/settings" element={<SettingsPage />} />
+
+                            {/* Privacy portal entry points */}
+                            <Route path="/data-rights" element={<DataRightsExercisePage />} />
+                            <Route path="/stakeholder-duties" element={<StakeholderDutiesPage />} />
+
+                            {/* Redirects for legacy URLs */}
+                            <Route path="/management/*" element={<Navigate to="/privacy" replace />} />
+                            <Route path="/assessment/*" element={<Navigate to="/privacy" replace />} />
+                            <Route path="/training/*" element={<Navigate to="/privacy" replace />} />
+                            <Route path="/dashboard/*" element={<Navigate to="/privacy" replace />} />
+                            <Route path="/resources/*" element={<Navigate to="/privacy" replace />} />
+                            <Route path="/role/*" element={<Navigate to="/privacy" replace />} />
+                            <Route path="/learning-paths/*" element={<Navigate to="/privacy" replace />} />
+                            <Route path="/onboarding/*" element={<Navigate to="/privacy" replace />} />
+                            <Route path="/calendar/*" element={<Navigate to="/privacy/obligations" replace />} />
+                            <Route path="/certificate/*" element={<Navigate to="/privacy" replace />} />
+                            <Route path="/integration/*" element={<Navigate to="/privacy" replace />} />
+
+                            {/* Catch-all redirect */}
+                            <Route path="*" element={<Navigate to="/" replace />} />
                           </Routes>
                         </main>
-                      </>
-                    } />
+                      } />
+                    </Routes>
+                  </div>
 
-                    {/* Main Application Routes without Sidebar */}
-                    <Route path="/*" element={
-                      <main id="main-content" className="flex-1 focus:outline-none">
-                        <Routes>
-                          {/* Public pages */}
-                          <Route path="/" element={<HomePage />} />
-                          <Route path="/about" element={<AboutPage />} />
-                          <Route path="/how-it-works" element={<HowItWorksPage />} />
-                          <Route path="/contact" element={<ContactPage />} />
-                          <Route path="/faq" element={<FAQPage />} />
-                          <Route path="/legal" element={<LegalPage />} />
-                          <Route path="/terms" element={<TermsPage />} />
-                          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-
-                          {/* Authentication */}
-                          <Route path="/login" element={<LoginPage />} />
-                          <Route path="/register" element={<RegisterPage />} />
-                          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                          <Route path="/profile" element={<ProfilePage />} />
-                          <Route path="/settings" element={<SettingsPage />} />
-
-                          {/* Privacy portal entry points */}
-                          <Route path="/data-rights" element={<DataRightsExercisePage />} />
-                          <Route path="/stakeholder-duties" element={<StakeholderDutiesPage />} />
-
-                          {/* Redirects for legacy URLs */}
-                          <Route path="/management/*" element={<Navigate to="/privacy" replace />} />
-                          <Route path="/assessment/*" element={<Navigate to="/privacy" replace />} />
-                          <Route path="/training/*" element={<Navigate to="/privacy" replace />} />
-                          <Route path="/dashboard/*" element={<Navigate to="/privacy" replace />} />
-                          <Route path="/resources/*" element={<Navigate to="/privacy" replace />} />
-                          <Route path="/role/*" element={<Navigate to="/privacy" replace />} />
-                          <Route path="/learning-paths/*" element={<Navigate to="/privacy" replace />} />
-                          <Route path="/onboarding/*" element={<Navigate to="/privacy" replace />} />
-                          <Route path="/calendar/*" element={<Navigate to="/privacy/obligations" replace />} />
-                          <Route path="/certificate/*" element={<Navigate to="/privacy" replace />} />
-                          <Route path="/integration/*" element={<Navigate to="/privacy" replace />} />
-
-                          {/* Catch-all redirect */}
-                          <Route path="*" element={<Navigate to="/" replace />} />
-                        </Routes>
-                      </main>
-                    } />
-                  </Routes>
+                  <Footer />
+                  <OfflineStatusIndicator />
                 </div>
-
-                <Footer />
-                <OfflineStatusIndicator />
-              </div>
-              </NotificationProvider>
+                </NotificationProvider>
             </AccessibilityProvider>
           </ThemeProvider>
         </ErrorBoundary>
