@@ -678,46 +678,47 @@ export function HomePage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-6 bg-gradient-to-r from-primary-600 to-blue-600 text-white">
+      <section className="py-20 px-6 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-primary-600 dark:to-blue-600 border-t dark:border-transparent">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Take Control of Your Privacy Today
           </h2>
-          <p className="text-primary-100 text-lg mb-8 max-w-3xl mx-auto">
+          <p className="text-slate-600 dark:text-primary-100 text-lg mb-8 max-w-3xl mx-auto">
             Whether you're exercising your data rights, fulfilling privacy duties, or managing institutional compliance, our self-service portal makes privacy management simple and accessible.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/data-rights">
-              <Button size="lg" className="font-medium bg-white text-gray-900 hover:bg-gray-100 border border-gray-200 shadow-sm">
+              <Button size="lg" className="font-medium bg-primary-600 text-white hover:bg-primary-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 border border-gray-200 shadow-sm">
                 Exercise Your Rights <Eye className="ml-2 h-4 w-4" />
               </Button>
             </Link>
             <Link to="/stakeholder-duties">
-              <Button size="lg" className="font-medium bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-200">
+              <Button size="lg" variant="outline" className="font-medium border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-all duration-200">
                 View My Duties <UserCheck className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
           
-          <div className="mt-8 pt-6 border-t border-white/20">
+          <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/20">
             <p className="text-primary-100 text-sm mb-4">
+            <p className="text-slate-500 dark:text-primary-100 text-sm mb-4">
               Questions about your privacy rights or duties?
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               <Link to="/contact">
-                <Button size="sm" className="bg-transparent border border-white/60 text-white hover:bg-white hover:text-gray-900 transition-all duration-200">
+                <Button size="sm" variant="outline" className="border-slate-300 text-slate-600 hover:bg-slate-100 dark:bg-transparent dark:border-white/60 dark:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-all duration-200">
                   <Mail className="h-4 w-4 mr-2" />
                   Contact Privacy Team
                 </Button>
               </Link>
               <Link to="/how-it-works">
-                <Button size="sm" className="bg-transparent border border-white/60 text-white hover:bg-white hover:text-gray-900 transition-all duration-200">
+                <Button size="sm" variant="outline" className="border-slate-300 text-slate-600 hover:bg-slate-100 dark:bg-transparent dark:border-white/60 dark:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-all duration-200">
                   <HelpCircle className="h-4 w-4 mr-2" />
                   How It Works
                 </Button>
               </Link>
               <Link to="/faq">
-                <Button size="sm" className="bg-transparent border border-white/60 text-white hover:bg-white hover:text-gray-900 transition-all duration-200">
+                <Button size="sm" variant="outline" className="border-slate-300 text-slate-600 hover:bg-slate-100 dark:bg-transparent dark:border-white/60 dark:text-white dark:hover:bg-white dark:hover:text-gray-900 transition-all duration-200">
                   <Info className="h-4 w-4 mr-2" />
                   FAQ
                 </Button>
