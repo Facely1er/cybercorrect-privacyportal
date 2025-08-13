@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /
+
+# This is a private privacy portal
+# Not intended for public search engine indexing
+
+Sitemap: https://cybercorrect.com/sitemap.xml

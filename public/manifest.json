@@ -1,0 +1,36 @@
+{
+  "name": "Privacy Self-Service Portal",
+  "short_name": "Privacy Portal",
+  "description": "Privacy self-service portal empowering stakeholders to exercise data rights and manage privacy compliance",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#1E40AF",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["privacy", "compliance", "security"],
+  "screenshots": [
+    {
+      "src": "/screenshots/privacy-portal.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "Privacy Self-Service Portal"
+    }
+  ]
+}

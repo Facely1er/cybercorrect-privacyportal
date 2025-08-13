@@ -1,0 +1,109 @@
+/* CyberCorrect Privacy Self-Service Portal Theme */
+@layer base {
+  :root {
+    /* RGB ints for alpha support in Tailwind via var() */
+    --cc-primary: 30 64 175;   /* #1E40AF */
+    --cc-accent:  30 58 138;   /* #1E3A8A */
+    --cc-bg:      248 250 255; /* #F8FAFF */
+    --cc-text:    11 18 32;    /* #0B1220 */
+    --cc-ring:    30 64 175;
+    --cc-muted:   226 232 240; /* slate-200 */
+    --cc-card:    255 255 255; /* white */
+    --cc-border:  203 213 225; /* slate-300 */
+    --cc-success: 34 197 94;   /* green-500 */
+    --cc-warning: 245 158 11;  /* amber-500 */
+    --cc-error:   239 68 68;   /* red-500 */
+  }
+
+  .dark {
+    --cc-primary: 165 180 252;  /* indigo-300 */
+    --cc-accent:  129 140 248;  /* indigo-400 */
+    --cc-bg:      10 12 16;     /* near black */
+    --cc-text:    230 234 242;  /* off white */
+    --cc-ring:    165 180 252;
+    --cc-muted:   45 55 72;     /* slate-600 */
+    --cc-card:    16 18 24;     /* dark card */
+    --cc-border:  55 65 81;     /* slate-600 */
+    --cc-success: 74 222 128;   /* green-400 */
+    --cc-warning: 251 191 36;   /* amber-400 */
+    --cc-error:   248 113 113;  /* red-400 */
+  }
+
+}
+
+/* Semantic utilities (usable without extra plugins) */
+.cc-btn {
+  @apply inline-flex items-center justify-center rounded-2xl px-4 py-2 font-medium shadow transition-all duration-200;
+  background-color: rgb(var(--cc-primary));
+  color: white;
+}
+.cc-btn:hover { 
+  filter: brightness(0.95); 
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--cc-primary) / 0.25);
+}
+.cc-btn:active { transform: translateY(0); }
+
+.cc-btn-outline {
+  @apply inline-flex items-center justify-center rounded-2xl px-4 py-2 font-medium border transition-all duration-200;
+  color: rgb(var(--cc-primary));
+  border-color: rgb(var(--cc-border));
+  background-color: transparent;
+}
+.cc-btn-outline:hover { 
+  background-color: rgba(var(--cc-primary) / 0.05);
+  border-color: rgb(var(--cc-primary));
+}
+
+.cc-link { 
+  color: rgb(var(--cc-primary)); 
+  @apply transition-colors duration-200 hover:underline;
+}
+
+.cc-card { 
+  background-color: rgb(var(--cc-card)); 
+  @apply rounded-2xl shadow border p-6 transition-shadow duration-200; 
+  border-color: rgb(var(--cc-border));
+}
+.cc-card:hover { 
+  box-shadow: 0 4px 20px rgba(var(--cc-primary) / 0.1);
+}
+
+.cc-chip { 
+  background-color: rgba(var(--cc-primary) / 0.1); 
+  color: rgb(var(--cc-primary)); 
+  @apply px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.cc-input { 
+  @apply w-full rounded-xl border px-4 py-3 outline-none transition-all duration-200; 
+  border-color: rgb(var(--cc-border));
+  background-color: rgb(var(--cc-card));
+}
+.cc-input:focus { 
+  box-shadow: 0 0 0 3px rgba(var(--cc-ring) / 0.35); 
+  border-color: rgb(var(--cc-primary));
+}
+
+.cc-badge-success { background-color: rgba(var(--cc-success) / 0.1); color: rgb(var(--cc-success)); }
+.cc-badge-warning { background-color: rgba(var(--cc-warning) / 0.1); color: rgb(var(--cc-warning)); }
+.cc-badge-error { background-color: rgba(var(--cc-error) / 0.1); color: rgb(var(--cc-error)); }
+
+.cc-gradient-hero {
+  background: linear-gradient(135deg, rgb(var(--cc-primary)), rgb(var(--cc-accent)));
+}
+
+.cc-surface {
+  background-color: rgb(var(--cc-card));
+  border-color: rgb(var(--cc-border));
+}
+
+/* Animation utilities */
+.cc-animate-fade-in {
+  animation: cc-fade-in 0.3s ease-out forwards;
+}
+
+@keyframes cc-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
