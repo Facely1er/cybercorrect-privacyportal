@@ -7,14 +7,15 @@ import './index.css';
 const rootElement = document.getElementById('root');
 
 if (!rootElement) {
-  document.body.innerHTML = '<div style="padding: 20px; text-align: center;"><h1>Error: Root element not found</h1></div>';
-} else {
-  const root = createRoot(rootElement);
-  root.render(
-    <StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </StrictMode>
-  );
+  throw new Error('Root element not found');
 }
+
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
+);

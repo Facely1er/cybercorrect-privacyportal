@@ -6,13 +6,13 @@ export default defineConfig({
   base: '/',
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
     sourcemap: false,
-    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ['react', 'react-dom'],
-          router: ['react-router-dom']
+          'react-vendor': ['react', 'react-dom'],
+          'router-vendor': ['react-router-dom']
         }
       }
     }
