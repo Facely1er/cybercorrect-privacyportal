@@ -323,7 +323,7 @@ export function HomePage() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {/* Core Compliance */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6 text-center">
               <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg w-fit mb-4">
                 <Shield className="h-6 w-6 text-blue-600 dark:text-blue-400" />
               </div>
@@ -341,7 +341,7 @@ export function HomePage() {
             </div>
 
             {/* Self-Service Portal */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6 text-center">
               <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-lg w-fit mb-4">
                 <Users className="h-6 w-6 text-green-600 dark:text-green-400" />
               </div>
@@ -358,7 +358,7 @@ export function HomePage() {
             </div>
 
             {/* Automated Workflows */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6 text-center">
               <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-lg w-fit mb-4">
                 <Settings className="h-6 w-6 text-purple-600 dark:text-purple-400" />
               </div>
@@ -375,7 +375,7 @@ export function HomePage() {
             </div>
 
             {/* Analytics & Insights */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6 text-center">
               <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded-lg w-fit mb-4">
                 <BarChart3 className="h-6 w-6 text-red-600 dark:text-red-400" />
               </div>
@@ -392,7 +392,7 @@ export function HomePage() {
             </div>
 
             {/* Stakeholder Management */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6 text-center">
               <div className="p-3 bg-amber-100 dark:bg-amber-900/30 rounded-lg w-fit mb-4">
                 <UserCheck className="h-6 w-6 text-amber-600 dark:text-amber-400" />
               </div>
@@ -409,7 +409,7 @@ export function HomePage() {
             </div>
 
             {/* Vendor Oversight */}
-            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6">
+            <div className="bg-white dark:bg-gray-900 rounded-lg border p-6 text-center">
               <div className="p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg w-fit mb-4">
                 <Building className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
               </div>
