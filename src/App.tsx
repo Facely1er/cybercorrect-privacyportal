@@ -1,140 +1,48 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { ThemeProvider } from './components/theme/ThemeProvider';
-import { NotificationProvider } from './contexts/NotificationContext';
-import { ProductionGuard } from './components/common/ProductionGuard';
-import { BrandProvider } from './components/common/BrandProvider';
-import { ErrorBoundary } from './common/ErrorBoundary';
-import { AccessibilityProvider, SkipToContent } from './components/common/AccessibilityProvider';
-import { OfflineStatusIndicator } from './components/common/OfflineStatusIndicator';
-
-// Layout components
-import { Header } from './components/layout/Header';
-import { Footer } from './components/layout/Footer';
-import { PrivacyPortalSidebar } from './components/layout/PrivacyPortalSidebar';
-
-// Core pages
-import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { HowItWorksPage } from './pages/HowItWorks';
-import { ContactPage } from './pages/ContactPage';
-import { FAQPage } from './pages/FAQPage';
-import { LegalPage } from './pages/LegalPage';
-import { TermsPage } from './pages/TermsPage';
-import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
-
-// Authentication pages
-import { LoginPage } from './pages/LoginPage';
-import { RegisterPage } from './pages/RegisterPage';
-import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
-import { ProfilePage } from './pages/ProfilePage';
-import { SettingsPage } from './pages/SettingsPage';
-
-// Privacy portal pages
-import { DataRightsExercisePage } from './pages/DataRightsExercisePage';
-import { StakeholderDutiesPage } from './pages/StakeholderDutiesPage';
-import { PrivacyDashboardPage } from './pages/privacy/PrivacyDashboardPage';
-import { DataRightsPortalPage } from './pages/privacy/DataRightsPortalPage';
-import { ComplianceObligationsPage } from './pages/privacy/ComplianceObligationsPage';
-import { PrivacyIncidentsPage } from './pages/privacy/PrivacyIncidentsPage';
-import { VendorAssessmentsPage } from './pages/privacy/VendorAssessmentsPage';
-import { ConsentManagementPage } from './pages/privacy/ConsentManagementPage';
-import { StakeholderManagementPage } from './pages/privacy/StakeholderManagementPage';
-import { AutomationPage } from './pages/privacy/AutomationPage';
-import { AnalyticsPage } from './pages/privacy/AnalyticsPage';
-import { ReportsPage } from './pages/privacy/ReportsPage';
 
 function App() {
   return (
-    <ProductionGuard>
-      <BrandProvider>
-        <ErrorBoundary>
-          <ThemeProvider defaultTheme="dark" storageKey="theme">
-            <AccessibilityProvider>
-              <NotificationProvider>
-                <div className="min-h-screen bg-background text-foreground flex flex-col">
-                  <SkipToContent />
-                  <Header />
-                  
-                  <div className="flex flex-1 pt-16">
-                    <Routes>
-                      {/* Privacy Portal Routes with Sidebar */}
-                      <Route path="/privacy/*" element={
-                        <>
-                          <PrivacyPortalSidebar />
-                          <main id="main-content" className="flex-1 focus:outline-none">
-                            <Routes>
-                              <Route index element={<PrivacyDashboardPage />} />
-                              <Route path="dashboard" element={<PrivacyDashboardPage />} />
-                              <Route path="data-rights" element={<DataRightsPortalPage />} />
-                              <Route path="obligations" element={<ComplianceObligationsPage />} />
-                              <Route path="incidents" element={<PrivacyIncidentsPage />} />
-                              <Route path="vendors" element={<VendorAssessmentsPage />} />
-                              <Route path="consent" element={<ConsentManagementPage />} />
-                              <Route path="stakeholders" element={<StakeholderManagementPage />} />
-                              <Route path="automation" element={<AutomationPage />} />
-                              <Route path="analytics" element={<AnalyticsPage />} />
-                              <Route path="reports" element={<ReportsPage />} />
-                            </Routes>
-                          </main>
-                        </>
-                      } />
-
-                      {/* Main Application Routes without Sidebar */}
-                      <Route path="/*" element={
-                        <main id="main-content" className="flex-1 focus:outline-none">
-                          <Routes>
-                            {/* Public pages */}
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/about" element={<AboutPage />} />
-                            <Route path="/how-it-works" element={<HowItWorksPage />} />
-                            <Route path="/contact" element={<ContactPage />} />
-                            <Route path="/faq" element={<FAQPage />} />
-                            <Route path="/legal" element={<LegalPage />} />
-                            <Route path="/terms" element={<TermsPage />} />
-                            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-
-                            {/* Authentication */}
-                            <Route path="/login" element={<LoginPage />} />
-                            <Route path="/register" element={<RegisterPage />} />
-                            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                            <Route path="/profile" element={<ProfilePage />} />
-                            <Route path="/settings" element={<SettingsPage />} />
-
-                            {/* Privacy portal entry points */}
-                            <Route path="/data-rights" element={<DataRightsExercisePage />} />
-                            <Route path="/stakeholder-duties" element={<StakeholderDutiesPage />} />
-
-                            {/* Redirects for legacy URLs */}
-                            <Route path="/management/*" element={<Navigate to="/privacy" replace />} />
-                            <Route path="/assessment/*" element={<Navigate to="/privacy" replace />} />
-                            <Route path="/training/*" element={<Navigate to="/privacy" replace />} />
-                            <Route path="/dashboard/*" element={<Navigate to="/privacy" replace />} />
-                            <Route path="/resources/*" element={<Navigate to="/privacy" replace />} />
-                            <Route path="/role/*" element={<Navigate to="/privacy" replace />} />
-                            <Route path="/learning-paths/*" element={<Navigate to="/privacy" replace />} />
-                            <Route path="/onboarding/*" element={<Navigate to="/privacy" replace />} />
-                            <Route path="/calendar/*" element={<Navigate to="/privacy/obligations" replace />} />
-                            <Route path="/certificate/*" element={<Navigate to="/privacy" replace />} />
-                            <Route path="/integration/*" element={<Navigate to="/privacy" replace />} />
-
-                            {/* Catch-all redirect */}
-                            <Route path="*" element={<Navigate to="/" replace />} />
-                          </Routes>
-                        </main>
-                      } />
-                    </Routes>
-                  </div>
-
-                  <Footer />
-                  <OfflineStatusIndicator />
-                </div>
-                </NotificationProvider>
-            </AccessibilityProvider>
-          </ThemeProvider>
-        </ErrorBoundary>
-      </BrandProvider>
-    </ProductionGuard>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <header className="bg-white dark:bg-gray-800 shadow">
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+            CyberCorrect™ Privacy Portal
+          </h1>
+        </div>
+      </header>
+      
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="px-4 py-6 sm:px-0">
+          <div className="border-4 border-dashed border-gray-200 dark:border-gray-700 rounded-lg h-96 flex items-center justify-center">
+            <div className="text-center">
+              <div className="text-6xl mb-4">🛡️</div>
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+                Privacy Portal Loading...
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                Educational privacy compliance made simple
+              </p>
+              <div className="mt-6 space-x-4">
+                <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                  Exercise Data Rights
+                </button>
+                <button className="border border-gray-300 dark:border-gray-600 px-6 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+                  View Privacy Duties
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <footer className="bg-white dark:bg-gray-800 shadow mt-8">
+        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-gray-600 dark:text-gray-400">
+            © 2025 CyberCorrect. Privacy Self-Service Portal.
+          </p>
+        </div>
+      </footer>
+    </div>
   );
 }
 
