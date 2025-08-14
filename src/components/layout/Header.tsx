@@ -48,7 +48,7 @@ export const Header = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <img 
-                src={brand.logo.primary} 
+                src="/cybercorrect.png" 
                 alt={brand.logo.alt} 
                 className="h-16 w-16"
               />
