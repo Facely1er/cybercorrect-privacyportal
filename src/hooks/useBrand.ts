@@ -1,74 +1,46 @@
-// React hook for accessing brand configuration
-import { useState, useEffect } from 'react';
-import { brandService, type BrandConfig } from '../services/brandService';
+// Simple brand hook to prevent deployment issues
+import { useMemo } from 'react';
 
-interface UseBrandReturn {
-  brand: ReturnType<typeof brandService.getBrandedProps>;
-  config: BrandConfig;
-  updateBrand: (updates: Partial<BrandConfig>) => boolean;
-  isLoading: boolean;
-}
-
-export function useBrand(): UseBrandReturn {
-  const [brand, setBrand] = useState(() => brandService.getBrandedProps());
-  const [config, setConfig] = useState(() => brandService.getWhiteLabelConfig());
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Initialize brand service
-    brandService.initialize();
-    
-    // Update state with current brand configuration
-    setBrand(brandService.getBrandedProps());
-    setConfig(brandService.getWhiteLabelConfig());
-    setIsLoading(false);
-  }, []);
-
-  const updateBrand = (updates: Partial<BrandConfig>): boolean => {
-    const success = brandService.updateBrandConfig(updates);
-    if (success) {
-      setBrand(brandService.getBrandedProps());
-      setConfig(brandService.getWhiteLabelConfig());
+export function useBrand() {
+  const brand = useMemo(() => ({
+    brandName: 'CyberCorrect',
+    fullBrandName: 'CyberCorrect™ Privacy Portal',
+    tagline: 'Privacy Portal',
+    description: 'Privacy self-service portal empowering stakeholders to exercise data rights and manage privacy compliance',
+    productNameWithTM: 'CyberCorrect™ Privacy Portal',
+    companyName: 'CyberCorrect',
+    companyNameWithTM: 'CyberCorrect™',
+    productName: 'CyberCorrect Privacy Portal',
+    shortDescription: 'Privacy self-service portal empowering stakeholders',
+    fullDescription: 'Privacy self-service portal empowering stakeholders to exercise data rights and manage privacy compliance',
+    logo: {
+      primary: '/logo.png',
+      icon: '/logo.png',
+      alt: 'CyberCorrect Logo'
+    },
+    colors: {
+      primary: '#1E40AF',
+      accent: '#1E3A8A',
+      background: '#F8FAFF',
+      text: '#0B1220'
+    },
+    contact: {
+      supportEmail: 'support@cybercorrect.com',
+      privacyEmail: 'privacy@cybercorrect.com',
+      legalEmail: 'legal@cybercorrect.com',
+      phone: '(240) 599-0102',
+      address: 'Gaithersburg, MD 20877'
+    },
+    legal: {
+      companyName: 'CyberCorrect',
+      registeredAddress: 'Gaithersburg, MD 20877',
+      country: 'United States',
+      state: 'Maryland'
+    },
+    social: {
+      website: 'https://cybercorrect.com'
     }
-    return success;
-  };
+  }), []);
 
-  return {
-    brand,
-    config,
-    updateBrand,
-    isLoading
-  };
-}
-
-// Hook for accessing specific brand elements
-export function useBrandElement<T extends keyof ReturnType<typeof brandService.getBrandedProps>>(
-  element: T
-): ReturnType<typeof brandService.getBrandedProps>[T] {
-  const { brand } = useBrand();
-  return brand[element];
-}
-
-// Hook for feature flags
-export function useFeatureFlag(flag: keyof BrandConfig['features']): boolean {
-  const { config } = useBrand();
-  return config.features[flag];
-}
-
-// Hook for brand colors (useful for dynamic styling)
-export function useBrandColors() {
-  const { brand } = useBrand();
-  return brand.colors;
-}
-
-// Hook for contact information
-export function useContactInfo() {
-  const { brand } = useBrand();
-  return brand.contact;
-}
-
-// Hook for legal information
-export function useLegalInfo() {
-  const { brand } = useBrand();
-  return brand.legal;
+  return { brand };
 }
