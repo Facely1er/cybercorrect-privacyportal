@@ -67,7 +67,7 @@ const defaultBrandConfig: BrandConfig = {
     supportEmail: 'support@cybercorrect.com',
     privacyEmail: 'privacy@cybercorrect.com',
     legalEmail: 'legal@cybercorrect.com',
-    phone: '(555) 123-4567',
+    phone: '(240) 599-0102',
     address: 'Gaithersburg, MD 20877'
   },
   legal: {
