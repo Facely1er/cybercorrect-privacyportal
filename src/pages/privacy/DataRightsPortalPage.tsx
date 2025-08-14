@@ -470,7 +470,7 @@ export function DataRightsPortalPage() {
                 <h3 className="font-medium mb-2">Privacy Office</h3>
                 <div className="text-sm text-muted-foreground space-y-1">
                   <p>Email: privacy@yourschool.edu</p>
-                  <p>Phone: (555) 123-4567</p>
+                  <p>Phone: (240) 599-0102</p>
                   <p>Hours: Monday-Friday, 8 AM - 5 PM</p>
                 </div>
               </div>
