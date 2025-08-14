@@ -17,6 +17,7 @@ import { FAQPage } from './pages/FAQPage';
 import { LegalPage } from './pages/LegalPage';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { PrivacyPortalPage } from './pages/PrivacyPortalPage';
 
 // Authentication pages
 import { LoginPage } from './pages/LoginPage';
@@ -28,6 +29,16 @@ import { SettingsPage } from './pages/SettingsPage';
 // Privacy portal pages
 import { DataRightsExercisePage } from './pages/DataRightsExercisePage';
 import { StakeholderDutiesPage } from './pages/StakeholderDutiesPage';
+import { PrivacyDashboardPage } from './pages/privacy/PrivacyDashboardPage';
+import { ComplianceObligationsPage } from './pages/privacy/ComplianceObligationsPage';
+import { PrivacyIncidentsPage } from './pages/privacy/PrivacyIncidentsPage';
+import { VendorAssessmentsPage } from './pages/privacy/VendorAssessmentsPage';
+import { ConsentManagementPage } from './pages/privacy/ConsentManagementPage';
+import { StakeholderManagementPage } from './pages/privacy/StakeholderManagementPage';
+import { AutomationPage } from './pages/privacy/AutomationPage';
+import { AnalyticsPage } from './pages/privacy/AnalyticsPage';
+import { ReportsPage } from './pages/privacy/ReportsPage';
+import { DataRightsPortalPage } from './pages/privacy/DataRightsPortalPage';
 
 function App() {
   return (
@@ -61,17 +72,17 @@ function App() {
                 <Route path="/stakeholder-duties" element={<StakeholderDutiesPage />} />
 
                 {/* Privacy portal routes */}
-                <Route path="/privacy" element={<Navigate to="/privacy/dashboard" replace />} />
-                <Route path="/privacy/dashboard" element={<div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">Privacy Dashboard</h1><p>Coming soon...</p></div>} />
-                <Route path="/privacy/data-rights" element={<DataRightsExercisePage />} />
-                <Route path="/privacy/obligations" element={<div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">Compliance Obligations</h1><p>Coming soon...</p></div>} />
-                <Route path="/privacy/incidents" element={<div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">Privacy Incidents</h1><p>Coming soon...</p></div>} />
-                <Route path="/privacy/vendors" element={<div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">Vendor Assessments</h1><p>Coming soon...</p></div>} />
-                <Route path="/privacy/consent" element={<div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">Consent Management</h1><p>Coming soon...</p></div>} />
-                <Route path="/privacy/stakeholders" element={<div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">Stakeholder Management</h1><p>Coming soon...</p></div>} />
-                <Route path="/privacy/automation" element={<div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">Automation</h1><p>Coming soon...</p></div>} />
-                <Route path="/privacy/analytics" element={<div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">Analytics</h1><p>Coming soon...</p></div>} />
-                <Route path="/privacy/reports" element={<div className="container mx-auto px-4 py-8"><h1 className="text-3xl font-bold">Reports</h1><p>Coming soon...</p></div>} />
+                <Route path="/privacy" element={<PrivacyPortalPage />} />
+                <Route path="/privacy/dashboard" element={<PrivacyDashboardPage />} />
+                <Route path="/privacy/data-rights" element={<DataRightsPortalPage />} />
+                <Route path="/privacy/obligations" element={<ComplianceObligationsPage />} />
+                <Route path="/privacy/incidents" element={<PrivacyIncidentsPage />} />
+                <Route path="/privacy/vendors" element={<VendorAssessmentsPage />} />
+                <Route path="/privacy/consent" element={<ConsentManagementPage />} />
+                <Route path="/privacy/stakeholders" element={<StakeholderManagementPage />} />
+                <Route path="/privacy/automation" element={<AutomationPage />} />
+                <Route path="/privacy/analytics" element={<AnalyticsPage />} />
+                <Route path="/privacy/reports" element={<ReportsPage />} />
 
                 {/* Catch-all redirect */}
                 <Route path="*" element={<Navigate to="/" replace />} />
