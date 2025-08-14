@@ -478,7 +478,7 @@ export function DataRightsPortalPage() {
                 <h3 className="font-medium mb-2">Student Records Office</h3>
                 <div className="text-sm text-muted-foreground space-y-1">
                   <p>Email: records@yourschool.edu</p>
-                  <p>Phone: (555) 123-4568</p>
+                  <p>Phone: (240) 599-0102 </p>
                   <p>Hours: Monday-Friday, 9 AM - 4 PM</p>
                 </div>
               </div>
