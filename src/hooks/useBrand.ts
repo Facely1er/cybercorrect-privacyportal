@@ -14,8 +14,8 @@ export function useBrand() {
     shortDescription: 'Privacy self-service portal empowering stakeholders',
     fullDescription: 'Privacy self-service portal empowering stakeholders to exercise data rights and manage privacy compliance',
     logo: {
-      primary: '/cybercorrect.png',
-      icon: '/cybercorrect.png',
+      primary: '/logos/cybercorrect-logo.png',
+      icon: '/logos/cybercorrect-logo.png',
       alt: 'CyberCorrect Logo'
     },
     colors: {

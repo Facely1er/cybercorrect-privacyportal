@@ -67,7 +67,7 @@ export function Footer() {
             <div className="space-y-3">
               <Link to="/" className="flex items-center space-x-2">
                 <img 
-                  src="/cybercorrect.png" 
+                  src="/logos/cybercorrect-logo.png" 
                   alt={brand.logo.alt} 
                   className="h-12 w-12"
                 />
