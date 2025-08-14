@@ -72,7 +72,7 @@ export function LoginPage() {
           <div className="text-center mb-8">
             <Link to="/" className="inline-flex items-center gap-2 mb-6">
               <img 
-                src={brand.logo.primary} 
+                src="/cybercorrect.png" 
                 alt={brand.logo.alt} 
                 className="h-12 w-12"
               />
