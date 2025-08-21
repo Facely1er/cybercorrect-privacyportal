@@ -1,16 +1,19 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
+import { AlertTriangle, RefreshCw, Home, Send } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { monitoringService } from '../services/monitoring';
 
 interface Props {
   children: ReactNode;
   fallback?: ReactNode;
+  componentName?: string;
 }
 
 interface State {
   hasError: boolean;
   error?: Error;
   errorInfo?: ErrorInfo;
+  errorId?: string;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
@@ -24,13 +27,24 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    this.setState({ errorInfo });
+    const errorId = `error_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    this.setState({ errorInfo, errorId });
     
-    // Log error to monitoring service
+    // Report error to monitoring service
+    monitoringService.reportError({
+      message: error.message,
+      stack: error.stack,
+      component: this.props.componentName || 'ErrorBoundary',
+      severity: 'high',
+      context: {
+        errorId,
+        componentStack: errorInfo.componentStack,
+        errorBoundary: true,
+        props: this.props,
+      },
+    });
+    
     console.error('ErrorBoundary caught an error:', error, errorInfo);
-    
-    // You can add error reporting service here
-    // ErrorReportingService.logError(error, errorInfo);
   }
 
   render() {
@@ -76,6 +90,13 @@ export class ErrorBoundary extends Component<Props, State> {
                 <Home className="h-4 w-4 mr-2" />
                 Go Home
               </Button>
+              {this.state.errorId && (
+                <div className="text-xs text-gray-500 dark:text-gray-400 mt-4">
+                  Error ID: {this.state.errorId}
+                  <br />
+                  Please include this ID when reporting the issue.
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -87,13 +108,40 @@ export class ErrorBoundary extends Component<Props, State> {
 }
 
 // Hook version for functional components
-function useErrorHandler() {
-  return (error: Error, errorInfo?: ErrorInfo) => {
-    console.error('Error caught by useErrorHandler:', error, errorInfo);
+export function useErrorHandler() {
+  return (error: Error, errorInfo?: ErrorInfo, componentName?: string) => {
+    const errorId = `error_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     
-    // You can add error reporting service here
-    // ErrorReportingService.logError(error, errorInfo);
+    // Report error to monitoring service
+    monitoringService.reportError({
+      message: error.message,
+      stack: error.stack,
+      component: componentName || 'useErrorHandler',
+      severity: 'medium',
+      context: {
+        errorId,
+        errorInfo,
+        hook: true,
+      },
+    });
+    
+    console.error('Error caught by useErrorHandler:', error, errorInfo);
     
     throw error; // Re-throw to trigger ErrorBoundary
   };
+}
+
+// Higher-order component for wrapping components with error boundaries
+export function withErrorBoundary<P extends object>(
+  Component: React.ComponentType<P>,
+  componentName?: string
+) {
+  const WrappedComponent = (props: P) => (
+    <ErrorBoundary componentName={componentName || Component.name}>
+      <Component {...props} />
+    </ErrorBoundary>
+  );
+  
+  WrappedComponent.displayName = `withErrorBoundary(${Component.displayName || Component.name})`;
+  return WrappedComponent;
 }
