@@ -18,7 +18,7 @@ import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
 import { exportService } from '../../services/exportService';
 import { localStorageService } from '../../services/localStorageService';
-import { useNotifications, createNotification } from '../../contexts/NotificationContext';
+import { useNotifications } from '../../contexts/NotificationContext';
 
 interface DataExportImportProps {
   className?: string;

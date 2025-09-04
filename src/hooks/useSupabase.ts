@@ -1,14 +1,14 @@
 // src/hooks/useSupabase.ts
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { supabase, type Profile } from '../lib/supabase'
 import { environment } from '../config/environment';
 
 // Authentication hook
 export function useUser() {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<unknown>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<any>(null)
+  const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
     // Get initial session
@@ -119,7 +119,7 @@ export function useUser() {
     return { data, error }
   }
 
-  const signUp = async (email: string, password: string, userData: any) => {
+  const signUp = async (email: string, password: string, userData: Record<string, unknown>) => {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,

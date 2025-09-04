@@ -1,15 +1,14 @@
 // Reusable data table component with sorting, filtering, and pagination
 import React, { useState, useMemo } from 'react';
-import { ChevronDown, ChevronUp, Search, Filter, Download, RefreshCw, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, Search, Download, RefreshCw, ChevronLeft, ChevronRight, AlertCircle } from 'lucide-react';
 import { Button } from '../ui/Button';
-import { Badge } from '../ui/Badge';
 
 interface Column<T> {
   key: keyof T;
   title: string;
   sortable?: boolean;
   filterable?: boolean;
-  render?: (value: any, row: T) => React.ReactNode;
+  render?: (value: unknown, row: T) => React.ReactNode;
   width?: string;
 }
 
@@ -27,7 +26,7 @@ interface DataTableProps<T> {
   className?: string;
 }
 
-export function DataTable<T extends Record<string, any>>({
+export function DataTable<T extends Record<string, unknown>>({
   data,
   columns,
   loading = false,
@@ -44,7 +43,6 @@ export function DataTable<T extends Record<string, any>>({
   const [sortColumn, setSortColumn] = useState<keyof T | null>(null);
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   const [currentPage, setCurrentPage] = useState(1);
-  const [filters, setFilters] = useState<Record<string, string>>({});
 
   // Filter and search data
   const filteredData = useMemo(() => {
@@ -69,7 +67,7 @@ export function DataTable<T extends Record<string, any>>({
     });
 
     return filtered;
-  }, [data, searchTerm, searchFields, filters]);
+  }, [data, searchTerm, searchFields]);
 
   // Sort data
   const sortedData = useMemo(() => {
@@ -103,10 +101,6 @@ export function DataTable<T extends Record<string, any>>({
     }
   };
 
-  const handleFilterChange = (column: keyof T, value: string) => {
-    setFilters(prev => ({ ...prev, [column]: value }));
-    setCurrentPage(1); // Reset to first page when filtering
-  };
 
   const handlePageChange = (page: number) => {
     setCurrentPage(Math.max(1, Math.min(page, totalPages)));

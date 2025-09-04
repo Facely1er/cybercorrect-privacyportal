@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { 
   Zap, 
-  Calendar, 
   Mail, 
   CheckCircle, 
   AlertTriangle, 

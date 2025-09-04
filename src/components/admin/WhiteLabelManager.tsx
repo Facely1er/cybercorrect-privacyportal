@@ -11,7 +11,6 @@ import {
   Mail, 
   Building,
   Settings,
-  CheckCircle,
   AlertCircle,
   Info
 } from 'lucide-react';
@@ -22,14 +21,14 @@ import { useBrand } from '../../hooks/useBrand';
 import { validateBrandConfig } from '../../config/brand';
 
 export function WhiteLabelManager() {
-  const { brand, config, updateBrand } = useBrand();
+  const { config, updateBrand } = useBrand();
   const [isDirty, setIsDirty] = useState(false);
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
   
   const [formData, setFormData] = useState(config);
 
-  const handleFieldChange = (section: string, field: string, value: any) => {
+  const handleFieldChange = (section: string, field: string, value: unknown) => {
     const newData = {
       ...formData,
       [section]: {
@@ -88,7 +87,7 @@ export function WhiteLabelManager() {
         
         const errors = validateBrandConfig(importedConfig);
         setValidationErrors(errors);
-      } catch (error) {
+      } catch {
         alert('Invalid configuration file');
       }
     };

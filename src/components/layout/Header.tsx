@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Shield, User, Settings, LogOut, Home, Database, Eye, UserCheck, FileText, HelpCircle } from 'lucide-react';
+import { User, Settings, LogOut, Home, Database, Eye, UserCheck, FileText, HelpCircle } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { NotificationDropdown } from '../notifications/NotificationDropdown';
 import { useUser } from '../../hooks/useSupabase';

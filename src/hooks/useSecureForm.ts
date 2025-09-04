@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { z } from 'zod';
 import { useAutosave } from './useAutosave';
 
-interface UseSecureFormProps<T = any> {
+interface UseSecureFormProps<T = Record<string, unknown>> {
   schema: z.ZodSchema<T>;
   onSubmit: (data: T) => Promise<{ success: boolean; message?: string }>;
   rateLimitKey?: string;
@@ -12,7 +12,7 @@ interface UseSecureFormProps<T = any> {
   enableAutosave?: boolean;
 }
 
-export function useSecureForm<T = any>({
+export function useSecureForm<T = Record<string, unknown>>({
   schema,
   onSubmit,
   rateLimitKey,
@@ -38,7 +38,7 @@ export function useSecureForm<T = any>({
     }
   );
 
-  const updateField = useCallback((field: string, value: any) => {
+  const updateField = useCallback((field: string, value: unknown) => {
     setData(prev => ({ ...prev, [field]: value }));
     // Clear field error when user starts typing
     if (errors[field]) {
@@ -50,9 +50,9 @@ export function useSecureForm<T = any>({
     }
   }, [errors]);
 
-  const validateField = useCallback((field: string, value: any) => {
+  const validateField = useCallback((field: string, value: unknown) => {
     try {
-      const fieldSchema = (schema as any).shape?.[field];
+      const fieldSchema = (schema as z.ZodObject<z.ZodRawShape>).shape?.[field];
       if (fieldSchema) {
         fieldSchema.parse(value);
         setErrors(prev => {
