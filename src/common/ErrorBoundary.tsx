@@ -1,6 +1,8 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { errorReportingService } from '../services/errorReportingService';
+import { environment } from '../config/environment';
 
 interface Props {
   children: ReactNode;
@@ -27,10 +29,7 @@ export class ErrorBoundary extends Component<Props, State> {
     this.setState({ errorInfo });
     
     // Log error to monitoring service
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
-    
-    // You can add error reporting service here
-    // ErrorReportingService.logError(error, errorInfo);
+    errorReportingService.logError(error, errorInfo);
   }
 
   render() {
@@ -50,7 +49,7 @@ export class ErrorBoundary extends Component<Props, State> {
               We apologize for the inconvenience. An unexpected error occurred while loading this page.
             </p>
             
-            {process.env.NODE_ENV === 'development' && this.state.error && (
+            {(environment.development || environment.debugMode) && this.state.error && (
               <details className="text-left mb-6 p-4 bg-gray-100 dark:bg-gray-700 rounded text-sm">
                 <summary className="cursor-pointer font-medium mb-2">Error Details</summary>
                 <pre className="whitespace-pre-wrap text-xs text-red-600 dark:text-red-400">
@@ -87,13 +86,9 @@ export class ErrorBoundary extends Component<Props, State> {
 }
 
 // Hook version for functional components
-function useErrorHandler() {
+export function useErrorHandler() {
   return (error: Error, errorInfo?: ErrorInfo) => {
-    console.error('Error caught by useErrorHandler:', error, errorInfo);
-    
-    // You can add error reporting service here
-    // ErrorReportingService.logError(error, errorInfo);
-    
+    errorReportingService.logError(error, errorInfo);
     throw error; // Re-throw to trigger ErrorBoundary
   };
 }

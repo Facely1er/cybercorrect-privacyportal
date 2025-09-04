@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './components/theme/ThemeProvider';
 import { NotificationProvider } from './contexts/NotificationContext';
 import { ErrorBoundary } from './common/ErrorBoundary';
+import { initializeAccessibility } from './utils/accessibility';
 
 // Layout components
 import { Header } from './components/layout/Header';
@@ -41,14 +42,29 @@ import { ReportsPage } from './pages/privacy/ReportsPage';
 import { DataRightsPortalPage } from './pages/privacy/DataRightsPortalPage';
 
 function App() {
+  useEffect(() => {
+    // Initialize accessibility features
+    initializeAccessibility();
+  }, []);
+
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark" storageKey="theme">
         <NotificationProvider>
           <div className="min-h-screen bg-background text-foreground flex flex-col">
+            {/* Skip link for accessibility */}
+            <a 
+              href="#main-content" 
+              className="skip-link focus-visible"
+              onFocus={(e) => e.target.classList.add('focus-visible')}
+              onBlur={(e) => e.target.classList.remove('focus-visible')}
+            >
+              Skip to main content
+            </a>
+            
             <Header />
             
-            <main id="main-content" className="flex-1 focus:outline-none pt-16">
+            <main id="main-content" className="flex-1 focus:outline-none pt-16" tabIndex={-1}>
               <Routes>
                 {/* Public pages */}
                 <Route path="/" element={<HomePage />} />
