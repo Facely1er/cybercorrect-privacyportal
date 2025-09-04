@@ -7,12 +7,8 @@ import {
   Download, 
   Shield, 
   FileText,
-  User,
   Clock,
-  CheckCircle,
-  AlertCircle,
   Mail,
-  Phone,
   Calendar,
   ArrowRight,
   Info,
@@ -220,7 +216,7 @@ export function DataRightsExercisePage() {
             {/* Applicable Regulations */}
             <div className="flex flex-wrap gap-2 mb-4">
               {right.regulations.map(reg => (
-                <Badge key={reg} variant={reg.toLowerCase() as any}>
+                <Badge key={reg} variant={reg.toLowerCase() as 'ferpa' | 'coppa' | 'gdpr' | 'ccpa' | 'cpra' | 'pipeda' | 'bipa' | 'shield' | 'sopipa' | 'vcdpa' | 'general'}>
                   {reg}
                 </Badge>
               ))}

@@ -5,7 +5,7 @@ interface LocalUser {
   name: string;
   email: string;
   role: string;
-  preferences: Record<string, any>;
+  preferences: Record<string, unknown>;
 }
 
 export function useLocalUser() {

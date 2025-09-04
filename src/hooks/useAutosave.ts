@@ -1,18 +1,18 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { localStorageService } from '../services/localStorageService';
 
-interface UseAutosaveOptions {
+interface UseAutosaveOptions<T> {
   delay?: number; // milliseconds to wait before saving
   enabled?: boolean;
-  onSave?: (data: any) => void;
-  onLoad?: (data: any) => void;
+  onSave?: (data: T) => void;
+  onLoad?: (data: T) => void;
 }
 
 export function useAutosave<T>(
   formId: string,
   data: T,
   setData: (data: T) => void,
-  options: UseAutosaveOptions = {}
+  options: UseAutosaveOptions<T> = {}
 ) {
   const {
     delay = 1000,

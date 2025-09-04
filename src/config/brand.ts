@@ -228,7 +228,7 @@ export const validateBrandConfig = (config: Partial<BrandConfig>): string[] => {
     errors.push('Support email must be a valid email address');
   }
   
-  if (config.contact?.phone && !/^[\+]?[\d\s\-\(\)]+$/.test(config.contact.phone)) {
+  if (config.contact?.phone && !/^[+]?[\d\s\-()]+$/.test(config.contact.phone)) {
     errors.push('Phone number format is invalid');
   }
   

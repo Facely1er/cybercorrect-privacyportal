@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BarChart3, TrendingUp, AlertTriangle, CheckCircle, Users, FileText, Clock } from 'lucide-react';
+import { BarChart3, AlertTriangle, CheckCircle, Users, FileText, Clock } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
 import { MetricsCard } from '../common/MetricsCard';
@@ -8,7 +8,7 @@ interface PrivacyAnalyticsDashboardProps {
   organizationId: string;
 }
 
-export function PrivacyAnalyticsDashboard({ organizationId }: PrivacyAnalyticsDashboardProps) {
+export function PrivacyAnalyticsDashboard({ organizationId: _ }: PrivacyAnalyticsDashboardProps) {
   const [timeRange, setTimeRange] = useState('30d');
 
   // Mock analytics data
@@ -118,7 +118,7 @@ export function PrivacyAnalyticsDashboard({ organizationId }: PrivacyAnalyticsDa
             <div key={metric.regulation} className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <Badge variant={metric.regulation.toLowerCase() as any}>
+                  <Badge variant={metric.regulation.toLowerCase() as 'ferpa' | 'coppa' | 'gdpr' | 'ccpa' | 'cpra' | 'pipeda' | 'bipa' | 'shield' | 'sopipa' | 'vcdpa' | 'general'}>
                     {metric.regulation}
                   </Badge>
                   <span className="font-medium">Compliance Score</span>

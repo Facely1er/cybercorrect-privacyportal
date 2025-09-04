@@ -5,16 +5,12 @@ import {
   Database, 
   Users, 
   CheckCircle, 
-  ArrowRight,
   FileText,
   Lock,
   Eye,
   Target,
   Building,
-  Globe,
-  UserCheck,
-  BarChart3,
-  AlertTriangle
+  UserCheck
 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
