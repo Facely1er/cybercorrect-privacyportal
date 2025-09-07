@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import { 
   Zap, 
-  Mail, 
-  CheckCircle, 
-  AlertTriangle, 
-  Clock,
   Settings,
   Play,
-  Pause,
-  RotateCcw,
   Target,
   Bell,
   FileText,
@@ -36,7 +30,7 @@ interface ComplianceAutomationProps {
   organizationId: string;
 }
 
-export function ComplianceAutomation({ organizationId }: ComplianceAutomationProps) {
+export function ComplianceAutomation({ organizationId: _ }: ComplianceAutomationProps) {
   const [automationRules, setAutomationRules] = useState<AutomationRule[]>([
     {
       id: 'auto-001',
