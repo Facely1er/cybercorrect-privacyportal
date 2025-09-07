@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './components/theme/ThemeProvider';
 import { NotificationProvider } from './contexts/NotificationContext';
+import { AuthProvider } from './hooks/useAuth';
 import { ErrorBoundary } from './common/ErrorBoundary';
+import { ProtectedRoute, AdminRoute, StaffRoute } from './components/auth/ProtectedRoute';
 import { initializeAccessibility } from './utils/accessibility';
 
 // Layout components
@@ -19,6 +21,7 @@ import { LegalPage } from './pages/LegalPage';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { PrivacyPortalPage } from './pages/PrivacyPortalPage';
+import { UnauthorizedPage } from './pages/UnauthorizedPage';
 
 // Authentication pages
 import { LoginPage } from './pages/LoginPage';
@@ -50,8 +53,9 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark" storageKey="theme">
-        <NotificationProvider>
-          <div className="min-h-screen bg-background text-foreground flex flex-col">
+        <AuthProvider>
+          <NotificationProvider>
+            <div className="min-h-screen bg-background text-foreground flex flex-col">
             {/* Skip link for accessibility */}
             <a 
               href="#main-content" 
@@ -80,8 +84,19 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/settings" element={<SettingsPage />} />
+                <Route path="/unauthorized" element={<UnauthorizedPage />} />
+                
+                {/* Protected Routes */}
+                <Route path="/profile" element={
+                  <ProtectedRoute>
+                    <ProfilePage />
+                  </ProtectedRoute>
+                } />
+                <Route path="/settings" element={
+                  <ProtectedRoute>
+                    <SettingsPage />
+                  </ProtectedRoute>
+                } />
 
                 {/* Privacy portal entry points */}
                 <Route path="/data-rights" element={<DataRightsExercisePage />} />
@@ -89,16 +104,56 @@ function App() {
 
                 {/* Privacy portal routes */}
                 <Route path="/privacy" element={<PrivacyPortalPage />} />
-                <Route path="/privacy/dashboard" element={<PrivacyDashboardPage />} />
-                <Route path="/privacy/data-rights" element={<DataRightsPortalPage />} />
-                <Route path="/privacy/obligations" element={<ComplianceObligationsPage />} />
-                <Route path="/privacy/incidents" element={<PrivacyIncidentsPage />} />
-                <Route path="/privacy/vendors" element={<VendorAssessmentsPage />} />
-                <Route path="/privacy/consent" element={<ConsentManagementPage />} />
-                <Route path="/privacy/stakeholders" element={<StakeholderManagementPage />} />
-                <Route path="/privacy/automation" element={<AutomationPage />} />
-                <Route path="/privacy/analytics" element={<AnalyticsPage />} />
-                <Route path="/privacy/reports" element={<ReportsPage />} />
+                <Route path="/privacy/dashboard" element={
+                  <StaffRoute>
+                    <PrivacyDashboardPage />
+                  </StaffRoute>
+                } />
+                <Route path="/privacy/data-rights" element={
+                  <ProtectedRoute>
+                    <DataRightsPortalPage />
+                  </ProtectedRoute>
+                } />
+                <Route path="/privacy/obligations" element={
+                  <StaffRoute>
+                    <ComplianceObligationsPage />
+                  </StaffRoute>
+                } />
+                <Route path="/privacy/incidents" element={
+                  <StaffRoute>
+                    <PrivacyIncidentsPage />
+                  </StaffRoute>
+                } />
+                <Route path="/privacy/vendors" element={
+                  <StaffRoute>
+                    <VendorAssessmentsPage />
+                  </StaffRoute>
+                } />
+                <Route path="/privacy/consent" element={
+                  <StaffRoute>
+                    <ConsentManagementPage />
+                  </StaffRoute>
+                } />
+                <Route path="/privacy/stakeholders" element={
+                  <AdminRoute>
+                    <StakeholderManagementPage />
+                  </AdminRoute>
+                } />
+                <Route path="/privacy/automation" element={
+                  <AdminRoute>
+                    <AutomationPage />
+                  </AdminRoute>
+                } />
+                <Route path="/privacy/analytics" element={
+                  <StaffRoute>
+                    <AnalyticsPage />
+                  </StaffRoute>
+                } />
+                <Route path="/privacy/reports" element={
+                  <StaffRoute>
+                    <ReportsPage />
+                  </StaffRoute>
+                } />
 
                 {/* Catch-all redirect */}
                 <Route path="*" element={<Navigate to="/" replace />} />
@@ -107,7 +162,8 @@ function App() {
 
             <Footer />
           </div>
-        </NotificationProvider>
+          </NotificationProvider>
+        </AuthProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

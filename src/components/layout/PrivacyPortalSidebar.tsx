@@ -343,7 +343,7 @@ export function PrivacyPortalSidebar() {
                                   </div>
                                   {item.badge && (
                                     <Badge 
-                                      variant={item.badge.variant as 'default' | 'ferpa' | 'coppa' | 'gdpr' | 'ccpa' | 'cpra' | 'pipeda' | 'bipa' | 'shield' | 'sopipa' | 'vcdpa' | 'general'}
+                                      variant={item.badge.variant === 'error' ? 'error' : item.badge.variant === 'warning' ? 'warning' : 'info'}
                                       className="text-xs flex-shrink-0"
                                     >
                                       {item.badge.text}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { User, Settings, LogOut, Home, Database, Eye, UserCheck, FileText, HelpCircle } from 'lucide-react';
+import { User, Settings, LogOut, Home, Database, Eye, UserCheck, FileText, HelpCircle, Menu, X } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { NotificationDropdown } from '../notifications/NotificationDropdown';
-import { useUser } from '../../hooks/useSupabase';
+import { useAuth } from '../../hooks/useAuth';
 import { useBrand } from '../../hooks/useBrand';
 
 export const Header = () => {
@@ -11,7 +11,7 @@ export const Header = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const { user, profile } = useUser();
+  const { user, profile, signOut } = useAuth();
   const { brand } = useBrand();
 
   // Handle scroll effect for sticky header
@@ -81,8 +81,17 @@ export const Header = () => {
             })}
           </nav>
 
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Toggle mobile menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+
           {/* Right side actions */}
-          <div className="flex items-center space-x-2">
+          <div className="hidden md:flex items-center space-x-2">
             <ThemeToggle />
             <NotificationDropdown />
             
@@ -119,14 +128,16 @@ export const Header = () => {
                         Settings
                       </Link>
                       <hr className="my-1" />
-                      <Link
-                        to="/login"
-                        className="flex items-center px-4 py-2 text-sm hover:bg-accent transition-colors"
-                        onClick={() => setIsUserMenuOpen(false)}
+                      <button
+                        onClick={async () => {
+                          setIsUserMenuOpen(false);
+                          await signOut();
+                        }}
+                        className="flex items-center px-4 py-2 text-sm hover:bg-accent transition-colors w-full text-left"
                       >
                         <LogOut className="w-4 h-4 mr-2" />
                         Sign Out
-                      </Link>
+                      </button>
                     </>
                   ) : (
                     <>
@@ -177,6 +188,72 @@ export const Header = () => {
                 );
               })}
             </nav>
+            
+            {/* Mobile User Actions */}
+            <div className="border-t border-border/50 pt-3 mt-3">
+              <div className="flex items-center justify-between px-3 py-2">
+                <div className="flex items-center space-x-2">
+                  <ThemeToggle />
+                  <NotificationDropdown />
+                </div>
+                <div className="flex items-center space-x-1">
+                  <User className="w-5 h-5 text-gray-700 dark:text-gray-200" />
+                  <span className="text-sm text-gray-700 dark:text-gray-200">
+                    {user ? (profile?.full_name || user.email?.split('@')[0] || 'Account') : 'Account'}
+                  </span>
+                </div>
+              </div>
+              
+              {user ? (
+                <div className="space-y-1 mt-2">
+                  <Link
+                    to="/profile"
+                    className="flex items-center px-3 py-2 text-sm hover:bg-accent transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <User className="w-4 h-4 mr-2" />
+                    Profile
+                  </Link>
+                  <Link
+                    to="/settings"
+                    className="flex items-center px-3 py-2 text-sm hover:bg-accent transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Settings className="w-4 h-4 mr-2" />
+                    Settings
+                  </Link>
+                  <button
+                    onClick={async () => {
+                      setIsMenuOpen(false);
+                      await signOut();
+                    }}
+                    className="flex items-center px-3 py-2 text-sm hover:bg-accent transition-colors w-full text-left"
+                  >
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-1 mt-2">
+                  <Link
+                    to="/login"
+                    className="flex items-center px-3 py-2 text-sm hover:bg-accent transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <User className="w-4 h-4 mr-2" />
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="flex items-center px-3 py-2 text-sm hover:bg-accent transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <FileText className="w-4 h-4 mr-2" />
+                    Register
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

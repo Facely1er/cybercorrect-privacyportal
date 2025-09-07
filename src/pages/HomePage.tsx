@@ -333,7 +333,7 @@ export function HomePage() {
               </p>
               <div className="flex flex-wrap gap-1">
                 {['FERPA', 'COPPA', 'CCPA', 'GDPR'].map(reg => (
-                  <Badge key={reg} variant={reg.toLowerCase() as any} className="text-xs">
+                  <Badge key={reg} variant="info" className="text-xs">
                     {reg}
                   </Badge>
                 ))}
@@ -554,7 +554,7 @@ export function HomePage() {
 
                 <div className="flex flex-wrap gap-1 mb-4">
                   {right.regulations.map(reg => (
-                    <Badge key={reg} variant={reg.toLowerCase() as any} className="text-xs">
+                    <Badge key={reg} variant="info" className="text-xs">
                       {reg}
                     </Badge>
                   ))}

@@ -352,7 +352,7 @@ export function PrivacyDashboardPage() {
                   <div key={item.regulation} className="space-y-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <Badge variant={item.regulation as any}>
+                        <Badge variant="info">
                           {regulation?.name || item.regulation.toUpperCase()}
                         </Badge>
                         <span className="font-medium">{regulation?.fullName}</span>
@@ -446,7 +446,7 @@ export function PrivacyDashboardPage() {
                 <div key={index} className="p-3 border rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-medium text-sm">{deadline.title}</h3>
-                    <Badge variant={deadline.regulation as any}>
+                    <Badge variant="info">
                       {deadline.regulation.toUpperCase()}
                     </Badge>
                   </div>
