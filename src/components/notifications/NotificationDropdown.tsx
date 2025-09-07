@@ -89,7 +89,7 @@ export function NotificationDropdown() {
                         <span className="text-xs text-muted-foreground">
                           {formatTimestamp(notification.timestamp)}
                         </span>
-                        <Badge variant="general" className="text-xs">
+                        <Badge variant="secondary" className="text-xs">
                           {notification.category}
                         </Badge>
                       </div>

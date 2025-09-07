@@ -1,40 +1,44 @@
 import React from 'react';
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Sun, Monitor } from 'lucide-react';
 import { Button } from './Button';
+import { useTheme } from '../theme/ThemeProvider';
 
 export function ThemeToggle() {
-  const [theme, setTheme] = React.useState<'light' | 'dark' | 'system'>('dark');
+  const { theme, setTheme } = useTheme();
 
-  React.useEffect(() => {
-    const stored = localStorage.getItem('theme') as 'light' | 'dark' | 'system' | null;
-    if (stored) {
-      setTheme(stored);
-    }
-  }, []);
-
-  React.useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.classList.add(systemTheme);
+  const cycleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else if (theme === 'dark') {
+      setTheme('system');
     } else {
-      root.classList.add(theme);
+      setTheme('light');
     }
+  };
 
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(current => current === 'light' ? 'dark' : 'light');
+  const getIcon = () => {
+    switch (theme) {
+      case 'light':
+        return <Sun className="h-[1.2rem] w-[1.2rem]" />;
+      case 'dark':
+        return <Moon className="h-[1.2rem] w-[1.2rem]" />;
+      case 'system':
+        return <Monitor className="h-[1.2rem] w-[1.2rem]" />;
+      default:
+        return <Sun className="h-[1.2rem] w-[1.2rem]" />;
+    }
   };
 
   return (
-    <Button variant="ghost" size="icon" onClick={toggleTheme} className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800">
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
+    <Button 
+      variant="ghost" 
+      size="icon" 
+      onClick={cycleTheme} 
+      className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+      title={`Current theme: ${theme}. Click to cycle through themes.`}
+    >
+      {getIcon()}
+      <span className="sr-only">Toggle theme (current: {theme})</span>
     </Button>
   );
 }
