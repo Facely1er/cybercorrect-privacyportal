@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { User, AlertTriangle, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { User, X } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useUser } from '../../hooks/useSupabase';
 

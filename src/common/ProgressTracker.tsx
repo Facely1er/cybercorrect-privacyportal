@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Clock, Target, TrendingUp } from 'lucide-react';
+import { CheckCircle, Clock, Target } from 'lucide-react';
 import { Badge } from '../components/ui/Badge';
 
 interface ProgressStep {
@@ -49,7 +49,7 @@ export function ProgressTracker({
         <div className="relative">
           <div className="absolute left-4 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-700"></div>
           <div className="space-y-6">
-            {steps.map((step, index) => (
+            {steps.map((step) => (
               <div key={step.id} className="relative flex items-start">
                 <div className={`flex items-center justify-center w-8 h-8 rounded-full z-10 ${
                   step.status === 'completed' 
@@ -179,41 +179,6 @@ export function ProgressTracker({
           </React.Fragment>
         ))}
       </div>
-    </div>
-  );
-}
-
-// Mini progress indicator for smaller spaces
-function MiniProgressIndicator({ 
-  current, 
-  total, 
-  label 
-}: { 
-  current: number; 
-  total: number; 
-  label?: string; 
-}) {
-  const percentage = Math.round((current / total) * 100);
-  
-  return (
-    <div className="flex items-center gap-3">
-      <div className="flex items-center gap-1">
-        <TrendingUp className="w-4 h-4 text-primary-600" />
-        <span className="text-sm font-medium">{current}/{total}</span>
-      </div>
-      
-      <div className="flex-1">
-        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-          <div 
-            className="bg-primary-600 h-1.5 rounded-full transition-all duration-300"
-            style={{ width: `${percentage}%` }}
-          />
-        </div>
-      </div>
-      
-      <span className="text-xs text-muted-foreground">
-        {label || `${percentage}%`}
-      </span>
     </div>
   );
 }

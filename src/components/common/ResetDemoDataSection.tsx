@@ -23,7 +23,7 @@ export function ResetDemoDataSection({
   const handleResetDemoData = () => {
     try {
       // Use the demo data service for proper cleanup
-      const result = demoDataService.flushDemoData();
+      demoDataService.flushDemoData();
       
       setShowResetConfirm(false);
       setResetSuccess(true);

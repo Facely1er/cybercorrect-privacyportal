@@ -7,7 +7,6 @@ import {
   AlertTriangle, 
   Building, 
   Users, 
-  Database,
   Shield,
   BarChart3,
   Settings,
@@ -16,12 +15,9 @@ import {
   UserCheck,
   ChevronDown,
   ChevronRight,
-  Calendar,
   Zap,
   Mail,
   Phone,
-  Menu,
-  X,
   PanelLeftClose,
   PanelLeftOpen
 } from 'lucide-react';
@@ -347,7 +343,7 @@ export function PrivacyPortalSidebar() {
                                   </div>
                                   {item.badge && (
                                     <Badge 
-                                      variant={item.badge.variant as any}
+                                      variant={item.badge.variant as 'default' | 'ferpa' | 'coppa' | 'gdpr' | 'ccpa' | 'cpra' | 'pipeda' | 'bipa' | 'shield' | 'sopipa' | 'vcdpa' | 'general'}
                                       className="text-xs flex-shrink-0"
                                     >
                                       {item.badge.text}
