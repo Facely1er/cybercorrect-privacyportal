@@ -2,17 +2,43 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useUser } from './useSupabase';
 
 interface AuthContextType {
-  user: any;
-  profile: any;
+  user: User | null;
+  profile: Profile | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   error: Error | null;
   checkingSession: boolean;
   userRole: string | null;
-  signIn: (email: string, password: string) => Promise<{ data: any; error: any }>;
-  signUp: (email: string, password: string, userData: Record<string, unknown>) => Promise<{ data: any; error: any }>;
-  signOut: () => Promise<{ error: any }>;
-  updateProfile: (updates: any) => Promise<{ data: any; error: any }>;
+  signIn: (email: string, password: string) => Promise<{ data: AuthResponse | null; error: AuthError | null }>;
+  signUp: (email: string, password: string, userData: Record<string, unknown>) => Promise<{ data: AuthResponse | null; error: AuthError | null }>;
+  signOut: () => Promise<{ error: AuthError | null }>;
+  updateProfile: (updates: Partial<Profile>) => Promise<{ data: Profile | null; error: AuthError | null }>;
+}
+
+interface User {
+  id: string;
+  email?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+interface AuthResponse {
+  user: User;
+  session: Session;
+}
+
+interface Session {
+  access_token: string;
+  refresh_token: string;
+  expires_at: number;
+  expires_in: number;
+  token_type: string;
+  user: User;
+}
+
+interface AuthError {
+  message: string;
+  status?: number;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

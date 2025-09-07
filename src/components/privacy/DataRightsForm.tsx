@@ -51,7 +51,7 @@ export function DataRightsForm({
       const result = await dataRightsService.submitRequest(
         {
           ...formData,
-          requestType: requestType as any
+          requestType: requestType as 'access' | 'rectification' | 'erasure' | 'portability' | 'objection' | 'restriction' | 'opt_out' | 'consent_withdrawal' | 'directory_opt_out'
         },
         organizationId
       );

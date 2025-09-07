@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  CheckCircle, 
-  AlertTriangle, 
-  Clock, 
   TrendingUp, 
   Calendar,
   ArrowRight,
@@ -48,18 +45,7 @@ export function ComplianceWidget({ className = '', showActions = true }: Complia
     }
   ];
 
-  const getPriorityBadge = (priority: string) => {
-    switch (priority) {
-      case 'critical':
-        return <Badge className="bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300">Critical</Badge>;
-      case 'high':
-        return <Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">High</Badge>;
-      case 'medium':
-        return <Badge className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">Medium</Badge>;
-      default:
-        return <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">Low</Badge>;
-    }
-  };
+  // Priority badge function removed as it's not currently used
 
   const formatDaysUntil = (days: number) => {
     if (days === 0) return 'Due today';

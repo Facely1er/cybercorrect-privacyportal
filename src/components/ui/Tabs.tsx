@@ -27,7 +27,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     
     const contextValue = React.useMemo(
       () => ({ value: localValue, onValueChange: handleValueChange }),
-      [localValue]
+      [localValue, handleValueChange]
     );
 
     return (

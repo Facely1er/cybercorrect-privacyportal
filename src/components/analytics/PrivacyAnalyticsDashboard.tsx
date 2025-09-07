@@ -8,7 +8,7 @@ interface PrivacyAnalyticsDashboardProps {
   organizationId: string;
 }
 
-export function PrivacyAnalyticsDashboard({ organizationId: _ }: PrivacyAnalyticsDashboardProps) {
+export function PrivacyAnalyticsDashboard({ organizationId }: PrivacyAnalyticsDashboardProps) {
   const [timeRange, setTimeRange] = useState('30d');
 
   // Mock analytics data
